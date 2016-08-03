@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+    <object class = "wxFrame" name = "MyFrame1">
+        <style>wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX</style>
+        <title>任务系统</title>
+        <centrered>1</centrered>
+        <object class = "wxPanel" name = "panel1">
+            <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                    <option>1</option>
+                    <flag>wxALL|wxEXPAND</flag>
+                    <border>5</border>
+                    <object class="wxTextCtrl" name="m_textCtrl1">
+                        <style>wxTE_MULTILINE|wxTE_READONLY</style>
+                        <value>目前没有任务</value>
+                    </object>
+                </object>
+                <object class="sizeritem">
+                    <option>0</option>
+                    <flag>wxEXPAND|wxALL</flag>
+                    <border>5</border>
+                    <object class="wxStaticLine" name="m_staticline1">
+                        <style>wxLI_HORIZONTAL</style>
+                    </object>
+                </object>
+                <object class="sizeritem">
+                    <option>0</option>
+                    <flag>wxALL|wxEXPAND</flag>
+                    <border>5</border>
+                    <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                            <option>1</option>
+                            <flag>wxALL|wxEXPAND</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_upload">
+                                <label>作品提交</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>1</option>
+                            <flag>wxALL|wxEXPAND</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_misson">
+                                <label>完成任务</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                    </object>
+                </object>
+            </object>
+        </object>
+        <object class="wxStatusBar" name="m_statusBar1">
+            <style>wxST_SIZEGRIP</style>
+            <fields>1</fields>
+        </object>
+    </object>
+</resource>

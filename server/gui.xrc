@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+    <object class="wxFrame" name="MyFrame">
+        <style>wxDEFAULT_FRAME_STYLE</style>
+        <title>教师端</title>
+        <size>820,500</size>
+        <centered>1</centered>
+        <object class="wxPanel" name="m_panel">
+            <object class="wxBoxSizer">
+                <orient>wxVERTICAL</orient>
+                <object class="sizeritem">
+                    <option>1</option>
+                    <flag>wxEXPAND</flag>
+                    <border>5</border>
+                    <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                            <option>1</option>
+                            <flag>wxEXPAND|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
+                                <object class="sizeritem">
+                                    <option>1</option>
+                                    <flag>wxEXPAND</flag>
+                                    <border>5</border>
+                                    <object class="wxPanel" name="m_panel_grid_sizer">
+                                    </object>
+                                </object>
+                                <object class="sizeritem">
+                                    <option>0</option>
+                                    <flag></flag>
+                                    <border>5</border>
+                                    <object class="wxBoxSizer">
+                                        <orient>wxHORIZONTAL</orient>
+                                        <object class="sizeritem">
+                                            <option>0</option>
+                                            <flag>wxALIGN_BOTTOM|wxALL</flag>
+                                            <border>5</border>
+                                            <object class="wxButton" name="m_button_task_case">
+                                                <label>任务情况</label>
+                                                <default>1</default>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <option>0</option>
+                                            <flag>wxALIGN_BOTTOM|wxALL</flag>
+                                            <border>5</border>
+                                            <object class="wxButton" name="m_button_job_case">
+                                                <label>作业情况</label>
+                                                <default>0</default>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <option>0</option>
+                                            <flag>wxALIGN_BOTTOM|wxALL</flag>
+                                            <border>5</border>
+                                            <object class="wxButton" name="m_button_file_case">
+                                                <label>发送选择</label>
+                                                <default>0</default>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <option>0</option>
+                                            <flag>wxALIGN_BOTTOM|wxALL</flag>
+                                            <border>5</border>
+                                            <object class="wxButton" name="m_button_select_all">
+                                                <label>全选</label>
+                                                <default>0</default>
+                                            </object>
+                                        </object>
+                                        <object class="sizeritem">
+                                            <option>0</option>
+                                            <flag>wxALIGN_BOTTOM|wxALL</flag>
+                                            <border>5</border>
+                                            <object class="wxButton" name="m_button_reset">
+                                                <label>重置</label>
+                                                <default>0</default>
+                                            </object>
+                                        </object>
+                                    </object>
+                                </object>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxEXPAND|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxStaticLine" name="m_staticline1">
+                                <style>wxLI_VERTICAL</style>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>1</option>
+                            <flag>wxEXPAND|wxALL</flag>
+                            <border>5</border>
+                            <object class="wxBoxSizer">
+                                <orient>wxVERTICAL</orient>
+                                <object class="sizeritem">
+                                    <option>1</option>
+                                    <flag>wxEXPAND|wxALL</flag>
+                                    <border>5</border>
+                                    <object class="wxTextCtrl" name="m_textCtrl">
+                                        <style>wxTE_MULTILINE</style>
+                                        <value>任务一:</value>
+                                    </object>
+                                </object>
+                                <object class="sizeritem">
+                                    <option>0</option>
+                                    <flag>wxALIGN_BOTTOM|wxALIGN_RIGHT|wxALL</flag>
+                                    <border>5</border>
+                                    <object class="wxButton" name="m_button_send_task">
+                                        <label>发送任务</label>
+                                        <default>0</default>
+                                    </object>
+							    </object>
+                            </object>
+                        </object>
+                    </object>
+                </object>
+                <object class="sizeritem">
+                    <option>0</option>
+                    <flag>wxEXPAND|wxALL</flag>
+                    <border>5</border>
+                    <object class="wxStaticLine" name="m_staticline2">
+                        <style>wxLI_HORIZONTAL</style>
+                    </object>
+                </object>
+                <object class="sizeritem">
+                    <option>0</option>
+                    <flag>wxEXPAND</flag>
+                    <border>5</border>
+                    <object class="wxBoxSizer">
+                        <orient>wxHORIZONTAL</orient>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_empty_task">
+                                <label>清空任务</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_empty_job">
+                                <label>清空作品</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_collection_job">
+                                <label>收集作业</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_send_job">
+                                <label>发送文件</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                        <object class="sizeritem">
+                            <option>0</option>
+                            <flag>wxALL</flag>
+                            <border>5</border>
+                            <object class="wxButton" name="m_button_send_all">
+                                <label>一键发送</label>
+                                <default>0</default>
+                            </object>
+                        </object>
+                    </object>
+                </object>
+            </object>
+        </object>
+        <object class="wxStatusBar" name="m_statusBar1">
+            <style>wxST_SIZEGRIP</style>
+            <fields>1</fields>
+        </object>
+    </object>
+</resource>
