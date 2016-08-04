@@ -12,7 +12,6 @@ from wx.lib.pubsub import pub
 
 class clientSocket(threading.Thread):
     BUFFER_SIZE = 2048 * 100
-    PATHNAME = "C:/"
 
     def __init__(self,config = None,gui = None,heartbeat = None):
         threading.Thread.__init__(self)
@@ -74,7 +73,7 @@ class clientSocket(threading.Thread):
                     elif d["type"] == "file":
                         self.receiveFile(d)
                     elif d["type"] == "getStudentJobs":
-                        self.uploadFile()
+                        self.uploadFile(d)
                     elif d["type"] == "taskInfo":
                         self.change_textCtrl(d['data'])
                     elif d["type"] == "EOF":
@@ -121,7 +120,7 @@ class clientSocket(threading.Thread):
             restsize = filesize - len(data)
             if (time.time() - startTime > 30) or (restsize <= 0):
                 break
-        pathname = os.path.join(self.PATHNAME, basename)
+        pathname = os.path.join(d["client_store_file_path"], basename)
         with open(pathname, 'wb') as f:
             f.write(data)
 
@@ -134,8 +133,8 @@ class clientSocket(threading.Thread):
             data = f.read()
         self.send(data)
 
-    def uploadFile(self):
-        path = self.config['jobptah']
+    def uploadFile(self,d):
+        path = d["client_send_file_path"]
         list = glob.glob(path + os.sep +'*')
         for l in list:
             if os.path.isfile(l):

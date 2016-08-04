@@ -3,6 +3,7 @@
 import wx
 from wx import xrc
 import wx.lib.buttons as buttons
+import json
 from student import Student
 from configReader import configReader
 import fun
@@ -55,12 +56,18 @@ class MyApp(wx.App):
         self.config['button_file_choose_on'] = fun.toRgb(cf.readConfig('Colour', 'button_file_choose_on'))
         self.config['button_choose_on'] = fun.toRgb(cf.readConfig('Colour', 'button_choose_on'))
         self.config['button_choose_off'] = fun.toRgb(cf.readConfig('Colour', 'button_choose_off'))
-        self.config['task'] = True
-        self.config['job']  = False
-        self.config['file'] = False
         self.config['host'] = cf.readConfig('Server','host')
         self.config['port'] = int(cf.readConfig('Server','port'))
-        self.config['send_path'] = cf.readConfig('File','send_path')
+        self.config['text_ctrl_colour'] = cf.readConfig('Font','text_ctrl_colour')
+        self.config['text_ctrl_fontsize'] = cf.readConfig('Font','text_ctrl_fontsize')
+        self.config['server_store_file_path'] = cf.readConfig('File','server_store_file_path')
+        self.config['server_send_file_path'] = cf.readConfig('File', 'server_send_file_path')
+        self.config['client_send_file_path'] = cf.readConfig('Client', 'client_send_file_path')
+        self.config['client_store_file_path'] = cf.readConfig('Client', 'client_store_file_path')
+        self.config['split_sep'] = cf.readConfig('File','split_sep')
+        self.config['task'] = True
+        self.config['job'] = False
+        self.config['file'] = False
 
     def create_student(self,num):
         self.students = []
@@ -179,18 +186,18 @@ class MyApp(wx.App):
             t.sendJson({"type":"uploadButton","data":False})
 
     def on_collection_job(self,event):
-        guiEvent(self.socketPool,"collectionJob")
+        guiEvent(self.socketPool,self.config,"collectionJob")
 
     def on_send_job(self,event):
         pathnames = None
         dialog = wx.FileDialog(self.frame, u"选择文件", style=wx.FD_OPEN | wx.FD_MULTIPLE)
         if dialog.ShowModal() == wx.ID_OK:
             pathnames = dialog.GetPaths()
+            guiEvent(self.socketPool, self.config,"sendFile", pathnames)
         dialog.Destroy()
-        guiEvent(self.socketPool, "sendFile", pathnames)
 
     def on_send_all(self, event):
-        guiEvent(self.socketPool, "allSendFile",self.config['send_path'])
+        guiEvent(self.socketPool, self.config, "allSendFile",self.config['server_send_file_path'])
 
 
 if __name__ == "__main__":

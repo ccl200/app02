@@ -46,7 +46,7 @@ class startThread(threading.Thread):
                     ip = addr[0]
                     name = str(int(ip[-2:]))
                     student = self.pair(name)
-                    oneSock = socketThread(conn,student,ip,self.socketPool,self.heartbeat)
+                    oneSock = socketThread(conn,student,ip,self.socketPool,self.heartbeat,self.config)
                     oneSock.setDaemon(True)
                     oneSock.start()
                     self.socketPool[name] = oneSock

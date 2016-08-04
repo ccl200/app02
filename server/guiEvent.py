@@ -2,13 +2,13 @@
 # -*- coding: UTF-8 -*-
 import threading
 import os
-import time
 import glob
 
 class guiEvent(threading.Thread):
-    def __init__(self,socketPool,fun,*args):
+    def __init__(self,socketPool,config,fun,*args):
         threading.Thread.__init__(self)
         self.socketPool = socketPool
+        self.config = config
         self.fun = fun
         self.args = args
         self.start()
@@ -61,10 +61,10 @@ class guiEvent(threading.Thread):
         for pathname in pathnames:
             basename = os.path.basename(pathname)
             f = os.path.splitext(basename)[0]
-            ip = f.split("##")[-1]
+            ip = f.split(self.config['split_sep'])[-1]
             pathDict[ip] = pathname
         return pathDict
 
     def collectionJob(self,list):
         for t in self.socketPool.values():
-            t.sendJson({"type":"getStudentJobs"})
+            t.sendJson({"type":"getStudentJobs","client_send_file_path":self.config['client_send_file_path']})

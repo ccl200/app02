@@ -10,8 +10,8 @@ import re
 
 class socketThread(threading.Thread):
     BUFFER_SIZE = 2048*100
-    PATHNAME = "d:/"
-    def __init__(self, conn = None, student = None, ip = None, socketPool = None,heartbeat = None):
+
+    def __init__(self, conn = None, student = None, ip = None, socketPool = None,heartbeat = None,config = None):
         threading.Thread.__init__(self)
         print u'接收到来自:{}的连接'.format(ip)
         self.conn = conn
@@ -22,6 +22,7 @@ class socketThread(threading.Thread):
         self.student.button.Enable()
         self.student.activity = True
         self.heartbeat = heartbeat
+        self.config = config
 
     def getIp(self):
         return self.ip
@@ -73,11 +74,11 @@ class socketThread(threading.Thread):
                         print u"上传成功"
                 except Exception,e:
                     print str(e)
-
+    #接收文件
     def receiveFile(self,d):
         filesize = int(d['size'])
         restsize = filesize
-        basename = d["basename"]
+        name , ext = os.path.splitext(d['basename'])
         data = ""
         startTime = time.time()
         while True:
@@ -88,18 +89,22 @@ class socketThread(threading.Thread):
             restsize = filesize - len(data)
             if (time.time() - startTime > 30) or (restsize <= 0):
                 break
-        pathname = os.path.join(self.PATHNAME,basename)
+        pathname = os.path.join(self.config['server_store_file_path'],name + self.config['split_sep'] + self.ip + ext)
         with open(pathname,'wb') as f:
             f.write(data)
 
+    #接收任务完成
     def receiveTaskButton(self,d):
         self.student.choose_task = d
         self.student.task_set_background_colour()
         #更新界面
         wx.CallAfter(pub.sendMessage,'update')
 
+    #发送文件
     def sendFile(self,size,basename,data):
-        self.sendJson({"type":"file","size":size,"basename":basename})
+        name, ext = os.path.splitext(basename)
+        newname = name.split(self.config["split_sep"])[0]
+        self.sendJson({"type":"file","size":size,"basename":newname + ext,"client_store_file_path":self.config['client_store_file_path']})
         self.send(data)
 
 

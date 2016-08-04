@@ -13,7 +13,10 @@ def toRgb(tmp):
 
 # 检测端口占用
 def detectionPort():
+    pass
+    '''
     ip=os.popen("ifconfig eth0|grep 'inet addr'|awk -F ':' '{print $2}'|awk '{print $1}'")
     ip=ip.read().strip()
     pid=os.popen("netstat -anp|grep 8998 |awk '{print $7}'").read().split('/')[0]
     os.popen('kill -9 {0}'.format(int(pid)))
+    '''
