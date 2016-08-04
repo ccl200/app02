@@ -53,8 +53,6 @@ class MyApp(wx.App):
         self.config['uploadSuccess'] = self.cf.readConfig('Info', 'uploadSuccess')
         self.config['uploadError'] = self.cf.readConfig('Info', 'uploadError')
         self.config['waitTask'] = self.cf.readConfig('Info', 'waitTask')
-        self.config['jobPath'] = self.cf.readConfig('File', 'jobPath')
-        self.config['tempPath'] = self.cf.readConfig('File', 'tempPath')
 
     #绑定事件
     def bind_event(self):

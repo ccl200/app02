@@ -77,6 +77,7 @@ class clientSocket(threading.Thread):
                     elif d["type"] == "taskInfo":
                         self.change_textCtrl(d['data'])
                     elif d["type"] == "EOF":
+                        self.status_bar.SetStatusText(u"提示: 发送成功", 0)
                         print u"上传成功"
                 except Exception,e:
                     print str(e)
