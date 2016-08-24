@@ -58,6 +58,7 @@ class MyApp(wx.App):
     def bind_event(self):
         self.frame.Bind(wx.EVT_BUTTON, self.on_upload, self.button_upload)
         self.frame.Bind(wx.EVT_BUTTON, self.on_task, self.button_misson)
+        self.frame.Bind(wx.EVT_CLOSE, self.on_close)
         pub.subscribe(self.frame.Refresh,"update")
 
     #作品上传按钮
@@ -86,6 +87,11 @@ class MyApp(wx.App):
         self.heartbeat = heartbeatThread(self.pool)
         self.heartbeat.setDaemon(True)
         self.heartbeat.start()
+
+    def on_close(self,event):
+        self.frame.Show(False)
+        return None
+        #event.Skip()
 
 if  __name__ == "__main__":
     app = MyApp()
