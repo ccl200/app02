@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 import re
 import os
+import socket
 
 # 十六进制转RGB
 def toRgb(tmp):
@@ -10,6 +11,16 @@ def toRgb(tmp):
     for i in range(0, len(opt)):
         rgb.append(int(opt[i], 16))
     return tuple(rgb)
+
+# 获取本机电脑名
+def getName():
+    name = socket.getfqdn(socket.gethostbyname())
+    return name
+
+# 获取本机内网IP
+def getIp():
+    addr = socket.gethostbyname(getName())
+    return addr
 
 # 检测端口占用
 def detectionPort():

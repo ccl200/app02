@@ -4,8 +4,7 @@ import socket
 import threading
 from socketThread import socketThread
 from heartbeatThread import heartbeatThread
-import os
-import time
+import fun
 
 class startThread(threading.Thread):
     def __init__(self,config,students,socketPool):
